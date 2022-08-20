@@ -1,10 +1,10 @@
-package br.com.ricardodn.teste_mkdata;
+package br.ricardo.crud.crud;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class TesteMkdataApplicationTests {
+class CrudApplicationTests {
 
 	@Test
 	void contextLoads() {
