@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import br.ricardo.crud.domain.entity.Customer;
 import br.ricardo.crud.domain.repository.CustomerRepository;
 import br.ricardo.crud.domain.service.CustomerService;
+import br.ricardo.crud.exception.CustomerNotFoundException;
 
 @Service 
 public class CustomerServiceImpl implements CustomerService {
@@ -29,19 +30,31 @@ public class CustomerServiceImpl implements CustomerService {
     } 
 
     @Override
-    public void saveCustomer(Customer customer) {
-        customerRepository.save(customer);
+    public Customer getCustomer(Long id) {
+        return customerRepository.findById(id).orElseThrow(() -> new CustomerNotFoundException(id));
     }
 
     @Override
-    public void updateCustomer(Customer customer) { 
+    public Customer saveCustomer(Customer customer) {
+        Customer customerObj = customer;
+        customerRepository.save(customerObj);
+        return customerObj;
+    }
+
+    @Override
+    public Customer updateCustomer(Customer customer) { 
+        Customer customerObj = customer;
         if(customer.getId() > 0)
-        customerRepository.save(customer);
+            customerRepository.save(customerObj);
+
+        return customerObj;
     }
 
     @Override
-    public void deleteCustomer(Long id) {
-        customerRepository.deleteById(id);
+    public Customer deleteCustomer(Long id) { 
+        Customer customerObj = getCustomer(id);
+        customerRepository.delete(customerObj); 
+        return customerObj;
     }
  
 } 
