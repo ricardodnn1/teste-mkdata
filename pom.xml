@@ -11,8 +11,8 @@
 	<groupId>br.ricardo.crud</groupId>
 	<artifactId>crud</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>crud</name>
-	<description>Crud Test</description>
+	<name>MKDATA Customer API</name>
+	<description>MKDATA Customer API</description>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
@@ -45,6 +45,6 @@
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
 		</plugins>
-	</build>
-
-</project>
+	</build> 
+    
+</project> 
