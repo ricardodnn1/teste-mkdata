@@ -1,4 +1,4 @@
-﻿package br.ricardo.crud.domain.dto;
+package br.ricardo.crud.domain.dto;
  
 import java.util.ArrayList;
 import java.util.List;
