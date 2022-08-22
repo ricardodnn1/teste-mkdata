@@ -1,4 +1,4 @@
-﻿package br.ricardo.crud.domain.service;
+package br.ricardo.crud.domain.service;
 
 import java.util.List;
 

@@ -1,4 +1,4 @@
-﻿package br.ricardo.crud.exception;
+package br.ricardo.crud.exception;
 
 import java.text.MessageFormat; 
 

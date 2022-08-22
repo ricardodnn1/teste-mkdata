@@ -1,4 +1,4 @@
-﻿package br.ricardo.crud.domain.entity;
+package br.ricardo.crud.domain.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

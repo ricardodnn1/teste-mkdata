@@ -1,4 +1,4 @@
-﻿package br.ricardo.crud.service;
+package br.ricardo.crud.service;
 
 import java.util.List;
 import java.util.stream.Collectors;

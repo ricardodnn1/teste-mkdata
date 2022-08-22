@@ -1,4 +1,4 @@
-﻿package br.ricardo.crud.domain.entity;
+package br.ricardo.crud.domain.entity;
  
 import java.util.ArrayList;
 import java.util.List;  

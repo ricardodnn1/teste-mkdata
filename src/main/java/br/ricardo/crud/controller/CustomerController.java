@@ -1,4 +1,4 @@
-﻿package br.ricardo.crud.controller;
+package br.ricardo.crud.controller;
 
 import java.util.List;
 import java.util.stream.Collectors;
