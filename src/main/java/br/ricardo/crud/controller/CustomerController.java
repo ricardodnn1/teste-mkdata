@@ -39,20 +39,23 @@ public class CustomerController {
 
     @PostMapping
     @RequestMapping("/save")
-    public void save(@RequestBody Customer customer) {
-        customerService.saveCustomer(customer);
+    public ResponseEntity<CustomerDto> save(@RequestBody CustomerDto customerDto) {
+        Customer customer = customerService.saveCustomer(Customer.from(customerDto));
+        return new ResponseEntity<CustomerDto>(CustomerDto.from(customer), HttpStatus.OK);
     }
 
     @PutMapping
     @RequestMapping("/update")
-    public void update(@RequestBody Customer customer) {
-        customerService.updateCustomer(customer);
+    public ResponseEntity<CustomerDto> update(@RequestBody CustomerDto customerDto) {
+        Customer customer = customerService.updateCustomer(Customer.from(customerDto));
+        return new ResponseEntity<CustomerDto>(CustomerDto.from(customer), HttpStatus.OK);
     }
 
     @DeleteMapping
     @RequestMapping("/delete/{id}")
-    public void delete(@PathVariable Long id) {
-        customerService.deleteCustomer(id);
+    public ResponseEntity<CustomerDto> delete(@PathVariable Long id) {
+        Customer customer = customerService.deleteCustomer(id);
+        return new ResponseEntity<CustomerDto>(CustomerDto.from(customer), HttpStatus.OK); 
     }
 
 }
