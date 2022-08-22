@@ -20,7 +20,7 @@ import br.ricardo.crud.domain.entity.Customer;
 import br.ricardo.crud.service.CustomerServiceImpl;
 
 @RestController
-@RequestMapping("/customers")
+@RequestMapping("/api/customers")
 public class CustomerController {
         
     private final CustomerServiceImpl customerService;   
