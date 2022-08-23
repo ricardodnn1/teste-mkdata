@@ -3,6 +3,8 @@ package br.ricardo.crud.controller;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -39,13 +41,13 @@ public class CustomerController {
 
     @PostMapping
     @RequestMapping("/save")
-    public ResponseEntity<Customer> save(@RequestBody Customer customer) {
+    public ResponseEntity<Customer> save(@RequestBody @Valid Customer customer) {
         return new ResponseEntity<Customer>(customerService.saveCustomer(customer), HttpStatus.OK);
     }
 
     @PutMapping
     @RequestMapping("/update")
-    public ResponseEntity<Customer> update(@RequestBody Customer customer) { 
+    public ResponseEntity<Customer> update(@RequestBody @Valid Customer customer) { 
         return new ResponseEntity<Customer>(customerService.updateCustomer(customer), HttpStatus.OK);
     }
 

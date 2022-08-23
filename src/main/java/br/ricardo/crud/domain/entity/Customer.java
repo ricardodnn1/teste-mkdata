@@ -11,6 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
 
 import br.ricardo.crud.domain.dto.CustomerDto;
 
@@ -22,12 +23,15 @@ public class Customer {
     @GeneratedValue(strategy = GenerationType.SEQUENCE)  
     private Long id;
 
+    @NotBlank(message = "Nome não informado")
     @Column(nullable = false)
     private String name;
     
+    @NotBlank(message = "Selecione o tipo de pessoa")
     @Column(nullable = false) 
     private String typePerson;
 
+    @NotBlank(message = "CPF/CNPJ não informado")
     @Column(nullable = false)
     private String cpfCnpj;
 
