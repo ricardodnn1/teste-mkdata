@@ -15,4 +15,6 @@ public interface CustomerService {
     Customer getCustomer(Long id);
 
     Customer deleteCustomer(Long id);
+
+    Customer findByCpfCnpj(String cnpfCnpj);
 }

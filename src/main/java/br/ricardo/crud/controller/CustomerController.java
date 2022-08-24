@@ -42,7 +42,11 @@ public class CustomerController {
     @PostMapping
     @RequestMapping("/save")
     public ResponseEntity<Customer> save(@RequestBody @Valid Customer customer) {
-        return new ResponseEntity<Customer>(customerService.saveCustomer(customer), HttpStatus.OK);
+        if(customerService.findByCpfCnpj(customer.getCpfCnpj().toString()) == null) { 
+            return new ResponseEntity<Customer>(customerService.saveCustomer(customer), HttpStatus.OK);
+        } else { 
+            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 
     @PutMapping

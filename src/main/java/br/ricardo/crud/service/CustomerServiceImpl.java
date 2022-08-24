@@ -54,5 +54,13 @@ public class CustomerServiceImpl implements CustomerService {
         customerRepository.delete(customerObj); 
         return customerObj;
     }
+
+    @Override
+    public Customer findByCpfCnpj(String cnpfCnpj) { 
+        Customer customerObj = customerRepository.findByCpfCnpj(cnpfCnpj);
+        return customerObj;
+    }
+
+    
  
 } 
