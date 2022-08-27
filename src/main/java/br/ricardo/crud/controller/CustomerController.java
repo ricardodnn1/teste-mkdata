@@ -27,12 +27,12 @@ import br.ricardo.crud.service.CustomerServiceImpl;
 public class CustomerController {
         
     private final CustomerServiceImpl customerService;  
-    private final CorsConfiguration corsConfiguration; 
+    CorsConfiguration corsConfiguration; 
         
     @Autowired
-    public CustomerController(CustomerServiceImpl customerService, CorsConfiguration corsConfiguration) {
+    public CustomerController(CustomerServiceImpl customerService) {
         this.customerService = customerService;
-        this.corsConfiguration = corsConfiguration;
+        this.corsConfiguration = new CorsConfiguration();
     }
 
     @GetMapping("/list")
