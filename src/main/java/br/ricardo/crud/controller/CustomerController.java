@@ -8,6 +8,7 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -16,8 +17,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import br.ricardo.crud.config.CorsConfiguration;
+ 
 import br.ricardo.crud.domain.dto.CustomerDto;
 import br.ricardo.crud.domain.entity.Customer;
 import br.ricardo.crud.service.CustomerServiceImpl;
@@ -26,15 +26,14 @@ import br.ricardo.crud.service.CustomerServiceImpl;
 @RequestMapping("/api/customers")
 public class CustomerController {
         
-    private final CustomerServiceImpl customerService;  
-    CorsConfiguration corsConfiguration; 
+    private final CustomerServiceImpl customerService;   
         
     @Autowired
     public CustomerController(CustomerServiceImpl customerService) {
-        this.customerService = customerService;
-        this.corsConfiguration = new CorsConfiguration();
+        this.customerService = customerService; 
     }
 
+    @CrossOrigin(origins = "http://localhost:4200")
     @GetMapping("/list")
     public ResponseEntity<List<CustomerDto>> getAll() {
         List<Customer> customers = customerService.getCustomers();
@@ -42,6 +41,7 @@ public class CustomerController {
         return new ResponseEntity<>(customerDto, HttpStatus.OK);
     }
 
+    @CrossOrigin(origins = "http://localhost:4200")
     @PostMapping
     @RequestMapping("/save")
     public ResponseEntity<Customer> save(@RequestBody @Valid Customer customer) {
@@ -52,12 +52,14 @@ public class CustomerController {
         }
     }
 
+    @CrossOrigin(origins = "http://localhost:4200")
     @PutMapping
     @RequestMapping("/update")
     public ResponseEntity<Customer> update(@RequestBody @Valid Customer customer) { 
         return new ResponseEntity<Customer>(customerService.updateCustomer(customer), HttpStatus.OK);
     }
 
+    @CrossOrigin(origins = "http://localhost:4200")
     @DeleteMapping
     @RequestMapping("/delete/{id}")
     public ResponseEntity<CustomerDto> delete(@PathVariable Long id) {
