@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import br.ricardo.crud.config.CorsConfiguration;
 import br.ricardo.crud.domain.dto.CustomerDto;
 import br.ricardo.crud.domain.entity.Customer;
 import br.ricardo.crud.service.CustomerServiceImpl;
@@ -25,11 +26,13 @@ import br.ricardo.crud.service.CustomerServiceImpl;
 @RequestMapping("/api/customers")
 public class CustomerController {
         
-    private final CustomerServiceImpl customerService;   
+    private final CustomerServiceImpl customerService;  
+    private final CorsConfiguration corsConfiguration; 
         
     @Autowired
-    public CustomerController(CustomerServiceImpl customerService) {
+    public CustomerController(CustomerServiceImpl customerService, CorsConfiguration corsConfiguration) {
         this.customerService = customerService;
+        this.corsConfiguration = corsConfiguration;
     }
 
     @GetMapping("/list")
