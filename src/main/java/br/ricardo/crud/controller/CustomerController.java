@@ -33,7 +33,7 @@ public class CustomerController {
         this.customerService = customerService; 
     }
 
-    @CrossOrigin(origins = "http://localhost:4200")
+    @CrossOrigin(origins = "*")
     @GetMapping("/list")
     public ResponseEntity<List<CustomerDto>> getAll() {
         List<Customer> customers = customerService.getCustomers();
@@ -41,7 +41,7 @@ public class CustomerController {
         return new ResponseEntity<>(customerDto, HttpStatus.OK);
     }
 
-    @CrossOrigin(origins = "http://localhost:4200")
+    @CrossOrigin(origins = "*")
     @PostMapping
     @RequestMapping("/save")
     public ResponseEntity<Customer> save(@RequestBody @Valid Customer customer) {
@@ -52,14 +52,14 @@ public class CustomerController {
         }
     }
 
-    @CrossOrigin(origins = "http://localhost:4200")
+    @CrossOrigin(origins = "*")
     @PutMapping
     @RequestMapping("/update")
     public ResponseEntity<Customer> update(@RequestBody @Valid Customer customer) { 
         return new ResponseEntity<Customer>(customerService.updateCustomer(customer), HttpStatus.OK);
     }
 
-    @CrossOrigin(origins = "http://localhost:4200")
+    @CrossOrigin(origins = "*")
     @DeleteMapping
     @RequestMapping("/delete/{id}")
     public ResponseEntity<CustomerDto> delete(@PathVariable Long id) {
