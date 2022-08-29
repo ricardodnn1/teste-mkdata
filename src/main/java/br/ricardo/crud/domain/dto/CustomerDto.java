@@ -8,20 +8,22 @@ import javax.transaction.Transactional;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
- 
+
+import br.ricardo.crud.domain.entity.BaseEntity;
 import br.ricardo.crud.domain.entity.Customer;
  
 @Transactional
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonInclude(JsonInclude.Include.NON_DEFAULT)
-public class CustomerDto {
+public class CustomerDto extends BaseEntity {
     
     private Long id;
     private String name;
     private String cpfCnpj;
     private String rgIe;
     private String status;
-    private String typePerson;  
+    private String typePerson;   
+
     private List<ContactDto> contactsDto = new ArrayList<>();
 
     public static CustomerDto from(Customer customer) {
@@ -32,6 +34,8 @@ public class CustomerDto {
         customerDto.setRgIe(customer.getCpfCnpj());
         customerDto.setStatus(customer.getStatus());
         customerDto.setTypePerson(customer.getTypePerson());
+        customerDto.setCreatedAt(customer.getCreatedAt());
+        customerDto.setUpdatedAt(customer.getUpdatedAt());
         customerDto.setContactsDto(customer.getContacts().stream().map(ContactDto::from).collect(Collectors.toList()));
         return customerDto;
     }
@@ -91,5 +95,5 @@ public class CustomerDto {
     public void setContactsDto(List<ContactDto> contactsDto) {
         this.contactsDto = contactsDto;
     }
-  
+ 
 }
