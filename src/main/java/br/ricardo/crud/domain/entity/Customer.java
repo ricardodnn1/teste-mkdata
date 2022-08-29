@@ -17,7 +17,7 @@ import br.ricardo.crud.domain.dto.CustomerDto;
 
 @Entity
 @Table(name="customers")
-public class Customer {
+public class Customer  extends BaseEntity {
     
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)  
