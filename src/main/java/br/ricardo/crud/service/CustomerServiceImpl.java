@@ -9,8 +9,7 @@ import org.springframework.stereotype.Service;
 
 import br.ricardo.crud.domain.entity.Customer;
 import br.ricardo.crud.domain.repository.CustomerRepository;
-import br.ricardo.crud.domain.service.CustomerService;
-import br.ricardo.crud.exception.CustomerNotFoundException;
+import br.ricardo.crud.domain.service.CustomerService; 
 
 @Service 
 public class CustomerServiceImpl implements CustomerService {
@@ -28,8 +27,8 @@ public class CustomerServiceImpl implements CustomerService {
     } 
 
     @Override
-    public Customer getCustomer(Long id) {
-        return customerRepository.findById(id).orElseThrow(() -> new CustomerNotFoundException(id));
+    public List<Customer> getCustomer(Long id) { 
+        return StreamSupport.stream(customerRepository.findCustomerById(id).spliterator(), false).collect(Collectors.toList());
     }
 
     @Override
@@ -50,7 +49,7 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Override
     public Customer deleteCustomer(Long id) { 
-        Customer customerObj = getCustomer(id);
+        Customer customerObj = customerRepository.findById(id).get();
         customerRepository.delete(customerObj); 
         return customerObj;
     }
@@ -59,8 +58,6 @@ public class CustomerServiceImpl implements CustomerService {
     public Customer findByCpfCnpj(String cnpfCnpj) { 
         Customer customerObj = customerRepository.findByCpfCnpj(cnpfCnpj);
         return customerObj;
-    }
-
-    
+    } 
  
 } 

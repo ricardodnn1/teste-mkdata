@@ -40,6 +40,14 @@ public class CustomerController {
         List<CustomerDto> customerDto = customers.stream().map(CustomerDto::from).collect(Collectors.toList());
         return new ResponseEntity<>(customerDto, HttpStatus.OK);
     }
+   
+    @CrossOrigin(origins = "*")
+    @GetMapping("/list/{id}")
+    public ResponseEntity<List<CustomerDto>> getCustomerById(@PathVariable Long id) {
+        List<Customer> customers = customerService.getCustomer(id);
+        List<CustomerDto> customerDto = customers.stream().map(CustomerDto::from).collect(Collectors.toList());
+        return new ResponseEntity<>(customerDto, HttpStatus.OK);
+    }
 
     @CrossOrigin(origins = "*")
     @PostMapping

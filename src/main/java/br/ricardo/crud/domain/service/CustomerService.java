@@ -12,9 +12,9 @@ public interface CustomerService {
 
     Customer updateCustomer(Customer customer);
 
-    Customer getCustomer(Long id);
+    List<Customer> getCustomer(Long id);
 
     Customer deleteCustomer(Long id);
 
-    Customer findByCpfCnpj(String cnpfCnpj);
+    Customer findByCpfCnpj(String cnpfCnpj); 
 }
